@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --main_bg: #ffff;
+  --page_color: #f7f7fb;
+  --input_color: #f0f2f5;
+  --line_color: #f0f2f5;
+  --primary_bg: #66717f;
+  
+}
