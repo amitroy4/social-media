@@ -10,17 +10,17 @@ const Registration = () => {
       <Helmet>
         <title>Registration</title>
       </Helmet>
-      <div className="relative">
-        <div className="w-[500px] h-[500px] bg-purple-100 rounded-full absolute -top-44 -left-60"></div>
+      <div className="relative z-[1]">
+        <div className=" hidden lg:block w-[500px] h-[500px] bg-purple-100 rounded-full absolute -top-44 -left-60 z-[-1]"></div>
         <div className="flex gap-x-6 justify-center items-center h-screen">
-          <div className="w-[50%]">
+          <div className="lg: w-[30%] xl:w-[50%] hidden lg:block">
             <LeftAuth
               icon={<Registrationicon />}
               title="Start Your Journey"
               description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates, nihil velit. Nisi unde officia quae explicabo eveniet nesciunt obcaecati eius vero harum, dignissimos, impedit a recusandae aliquam? Inventore ex distinctio officiis impedit numquam doloribus alias aliquid velit hic illo! Quo molestiae neque, ex laboriosam maxime expedita? Repellendus, reprehenderit voluptas ex possimus officia ea."
             />
           </div>
-          <div className="w-[40%]">
+          <div className="w-full lg:w-[45%] xl:w-[35%]">
             <RegistrationForm />
           </div>
         </div>

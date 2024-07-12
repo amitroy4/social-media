@@ -26,7 +26,7 @@ const RegistrationForm = () => {
   const { errors, touched } = formik;
   console.log(formik.values);
   return (
-    <div className="w-full rounded-md shadow-md px-11 py-7 box-border">
+    <div className="w-full rounded-md shadow-md p-4 lg:px-11 lg:py-7 box-border border border-line_color lg:border-none">
       <div>
         <form onSubmit={formik.handleSubmit}>
           <input
@@ -105,7 +105,7 @@ const RegistrationForm = () => {
               {errors.password}
             </p>
           )}
-          <div className="flex gap-x-7 mb-4">
+          <div className="flex gap-x-1 lg:gap-x-7 mb-4">
             <select
               onChange={formik.handleChange}
               autoComplete="off"
@@ -114,7 +114,7 @@ const RegistrationForm = () => {
               value={formik.values.bYear}
               className="border border-line_color w-[33%] font-gilroyRegular p-2"
             >
-              <option>Birthday Year</option>
+              <option>Year</option>
               <option>1992</option>
               <option>1993</option>
               <option>1994</option>
@@ -127,7 +127,7 @@ const RegistrationForm = () => {
               value={formik.values.bMonth}
               className="border border-line_color w-[33%] font-gilroyRegular p-2"
             >
-              <option>Birthday Month</option>
+              <option>Month</option>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -140,7 +140,7 @@ const RegistrationForm = () => {
               value={formik.values.bDate}
               className="border border-line_color w-[33%] font-gilroyRegular p-2"
             >
-              <option>Birthday Day</option>
+              <option>Day</option>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -179,14 +179,14 @@ const RegistrationForm = () => {
               {errors.gender}
             </p>
           )}
-          <div className="flex justify-between items-center mt-4">
+          <div className="sm:flex justify-between items-center mt-4">
             <button
               type="submit"
               className="px-4 py-2 bg-secondary_bg rounded-md text-white font-gilroyRegular"
             >
               Submit
             </button>
-            <p className="text-base font-gilroyMedium">
+            <p className="text-base font-gilroyMedium text-base xl:text-sm 2xl:text-base mt-5 sm:mt-0">
               Already have an account?
               <Link to="/" className="text-primary_color underline">
                 Sign In
