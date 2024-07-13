@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import { signUp } from "../validation";
+import { signUp } from "../../validation";
 
 const initialState = {
   fName: "",

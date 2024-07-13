@@ -1,7 +1,7 @@
 import React from "react";
-import LeftAuth from "../../authentication/LeftAuth";
+import LeftAuth from "../../components/authentication/LeftAuth";
 import { Registrationicon } from "../../svg/Registrationicon";
-import RegistrationForm from "../../authentication/RegistrationForm";
+import RegistrationForm from "../../components/authentication/RegistrationForm";
 import { Helmet } from "react-helmet-async";
 
 const Registration = () => {
