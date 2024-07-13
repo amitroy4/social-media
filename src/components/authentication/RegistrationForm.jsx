@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { signUp } from "../../validation";
+import DateOfBirth from "./DateOfBirth";
+import Gender from "./Gender";
 
 const initialState = {
   fName: "",
@@ -34,6 +36,7 @@ const RegistrationForm = () => {
       } else if (currentDate - picked_Date > old) {
         return setAgeError("Your age is above 70.");
       } else {
+        console.log("Submitted");
         return setAgeError("");
       }
     },
@@ -131,86 +134,16 @@ const RegistrationForm = () => {
               {errors.password}
             </p>
           )}
-          <div className="flex gap-x-1 lg:gap-x-7 mb-4">
-            <select
-              onChange={formik.handleChange}
-              autoComplete="off"
-              onBlur={formik.handleBlur}
-              name="bYear"
-              value={formik.values.bYear}
-              className="border border-line_color w-[33%] font-gilroyRegular p-2"
-            >
-              <option>Year</option>
-              {years.map((years, index) => (
-                <option key={index}>{years}</option>
-              ))}
-            </select>
-            <select
-              onChange={formik.handleChange}
-              autoComplete="off"
-              onBlur={formik.handleBlur}
-              name="bMonth"
-              value={formik.values.bMonth}
-              className="border border-line_color w-[33%] font-gilroyRegular p-2"
-            >
-              <option>Month</option>
-              {months.map((months, index) => (
-                <option key={index}>{months}</option>
-              ))}
-            </select>
-            <select
-              onChange={formik.handleChange}
-              autoComplete="off"
-              onBlur={formik.handleBlur}
-              name="bDate"
-              value={formik.values.bDate}
-              className="border border-line_color w-[33%] font-gilroyRegular p-2"
-            >
-              <option>Day</option>
-              {getDates.map((dates, index) => (
-                <option key={index}>{dates}</option>
-              ))}
-            </select>
-          </div>
-          {ageError && (
-            <p className=" font-gilroyRegular text-red text-sm my-2">
-              {ageError}
-            </p>
-          )}
 
-          <div className="mt-5">
-            <input
-              onChange={formik.handleChange}
-              autoComplete="off"
-              onBlur={formik.handleBlur}
-              id="Male"
-              type="radio"
-              name="gender"
-              value="male"
-              className="ml-5"
-            />
-            <label htmlFor="Male" className="font-gilroyRegular ml-2">
-              Male
-            </label>
-            <input
-              onChange={formik.handleChange}
-              autoComplete="off"
-              onBlur={formik.handleBlur}
-              id="Female"
-              type="radio"
-              name="gender"
-              value="female"
-              className="ml-5"
-            />
-            <label htmlFor="Female" className="font-gilroyRegular ml-2">
-              Female
-            </label>
-          </div>
-          {errors.gender && touched.gender && (
-            <p className=" font-gilroyRegular text-red text-sm my-2">
-              {errors.gender}
-            </p>
-          )}
+          <DateOfBirth
+            formik={formik}
+            years={years}
+            months={months}
+            getDates={getDates}
+            ageError={ageError}
+          />
+          <Gender formik={formik} errors={errors} touched={touched} />
+
           <div className="sm:flex justify-between items-center mt-4">
             <button
               type="submit"
