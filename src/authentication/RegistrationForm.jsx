@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { signUp } from "../validation";
@@ -15,11 +15,27 @@ const initialState = {
 };
 
 const RegistrationForm = () => {
+  const [ageError, setAgeError] = useState("");
   const formik = useFormik({
     initialValues: initialState,
     validationSchema: signUp,
     onSubmit: () => {
-      console.log("Hello Signup");
+      const currentDate = new Date();
+      const picked_Date = new Date(
+        formik.values.bYear,
+        formik.values.bMonth - 1,
+        formik.values.bDate
+      );
+      const adult = new Date(1970 + 18, 0, 1);
+      const old = new Date(1970 + 70, 0, 1);
+
+      if (currentDate - picked_Date < adult) {
+        return setAgeError("Your age is below 18.");
+      } else if (currentDate - picked_Date > old) {
+        return setAgeError("Your age is above 70.");
+      } else {
+        return setAgeError("");
+      }
     },
   });
 
@@ -156,7 +172,13 @@ const RegistrationForm = () => {
               ))}
             </select>
           </div>
-          <div>
+          {ageError && (
+            <p className=" font-gilroyRegular text-red text-sm my-2">
+              {ageError}
+            </p>
+          )}
+
+          <div className="mt-5">
             <input
               onChange={formik.handleChange}
               autoComplete="off"
