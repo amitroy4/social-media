@@ -8,9 +8,9 @@ const initialState = {
   lName: "",
   email: "",
   password: "",
-  bYear: "",
-  bMonth: "",
-  bDate: "",
+  bYear: new Date().getFullYear(),
+  bMonth: new Date().getMonth() + 1,
+  bDate: new Date().getDate(),
   gender: "",
 };
 
@@ -23,8 +23,18 @@ const RegistrationForm = () => {
     },
   });
 
+  const tempYears = new Date().getFullYear();
+
+  const years = Array.from(new Array(105), (val, index) => tempYears - index);
+  const months = Array.from(new Array(12), (val, index) => index + 1);
+  const days = () => {
+    return new Date(formik.values.bYear, formik.values.bMonth, 0).getDate();
+  };
+
+  const getDates = Array.from(new Array(days()), (value, index) => index + 1);
+
   const { errors, touched } = formik;
-  console.log(formik.values);
+  // console.log(formik.values);
   return (
     <div className="w-full rounded-md shadow-md p-4 lg:px-11 lg:py-7 box-border border border-line_color lg:border-none">
       <div>
@@ -115,9 +125,9 @@ const RegistrationForm = () => {
               className="border border-line_color w-[33%] font-gilroyRegular p-2"
             >
               <option>Year</option>
-              <option>1992</option>
-              <option>1993</option>
-              <option>1994</option>
+              {years.map((years, index) => (
+                <option key={index}>{years}</option>
+              ))}
             </select>
             <select
               onChange={formik.handleChange}
@@ -128,9 +138,9 @@ const RegistrationForm = () => {
               className="border border-line_color w-[33%] font-gilroyRegular p-2"
             >
               <option>Month</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
+              {months.map((months, index) => (
+                <option key={index}>{months}</option>
+              ))}
             </select>
             <select
               onChange={formik.handleChange}
@@ -141,9 +151,9 @@ const RegistrationForm = () => {
               className="border border-line_color w-[33%] font-gilroyRegular p-2"
             >
               <option>Day</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
+              {getDates.map((dates, index) => (
+                <option key={index}>{dates}</option>
+              ))}
             </select>
           </div>
           <div>
